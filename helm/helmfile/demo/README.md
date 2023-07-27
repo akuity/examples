@@ -24,7 +24,7 @@ releases:
 
 Once you've set up a [CMP](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/) on your instance, you can deploy this repo by applying the following `Application` definition:
 
-> :bangbang: **You may need to change some fields like the `spec.destination.name` and `spec.destination.namespace` depending on your environment
+> :bangbang: **You may need to change some fields like the `spec.destination.name` and `spec.destination.namespace` depending on your environment**
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
