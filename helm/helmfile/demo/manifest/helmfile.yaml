@@ -1,0 +1,15 @@
+repositories:
+- name: akuity-demo
+  url: https://akuity.github.io/demo-helm-charts/
+
+releases:
+- name: jupiter
+  chart: akuity-demo/simple-go
+  set:
+  - name: replicaCount
+    value: 2
+- name: saturn
+  chart: akuity-demo/gobg
+  set:
+  - name: color
+    value: green

@@ -1,2 +1,3 @@
-# examples
-Example Deployments to use for Demos
+# Akuity Example Deployments
+
+Example Deployments to use for Demos.
