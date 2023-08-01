@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-plugin
+  # finalizers:
+  # - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: hello-plugin
+    name: kind
+  project: default
+  source:
+    path: manifests/
+    repoURL: https://github.com/argoproj-labs/applicationset-hello-plugin
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

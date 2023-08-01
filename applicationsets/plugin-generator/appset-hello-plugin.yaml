@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myplugin
+spec:
+  generators:
+    - plugin:
+        configMapRef:
+          name: applicationset-hello-plugin
+  template:
+    metadata:
+      name: "from-appset-{{hello}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/argoproj/argocd-example-apps.git
+        path: .
+      destination:
+        server: kind
+        namespace: default
