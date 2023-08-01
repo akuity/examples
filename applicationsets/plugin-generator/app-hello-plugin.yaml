@@ -6,11 +6,11 @@ metadata:
   # - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: hello-plugin
+    namespace: applicationset-hello-plugin
     name: kind
   project: default
   source:
-    path: manifests/
+    path: ./
     repoURL: https://github.com/argoproj-labs/applicationset-hello-plugin
     targetRevision: HEAD
   syncPolicy:
