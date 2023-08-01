@@ -16,5 +16,5 @@ spec:
         repoURL: https://github.com/argoproj/argocd-example-apps.git
         path: .
       destination:
-        server: kind
+        name: kind
         namespace: default
