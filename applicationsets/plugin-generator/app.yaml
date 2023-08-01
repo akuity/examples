@@ -1,13 +1,13 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: plugin-generator-example-apps
-spec:
-  destination:
-    name: in-cluster
-    namespace: argocd
-  source:
-    path: applicationsets/plugin-generator
-    repoURL: 'https://github.com/akuity/examples'
-    targetRevision: HEAD
-  project: default
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: plugin-generator-example-apps
+# spec:
+#   destination:
+#     name: in-cluster
+#     namespace: argocd
+#   source:
+#     path: applicationsets/plugin-generator
+#     repoURL: 'https://github.com/akuity/examples'
+#     targetRevision: HEAD
+#   project: default
