@@ -1,0 +1,13 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cronjobs
+# spec:
+#   destination:
+#     name: in-cluster
+#     namespace: argocd
+#   source:
+#     path: cronjobs/
+#     repoURL: 'https://github.com/akuity/examples'
+#     targetRevision: HEAD
+#   project: default
