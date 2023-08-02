@@ -5,7 +5,7 @@
 # spec:
 #   destination:
 #     name: in-cluster
-#     namespace: argocd
+#     namespace: default
 #   source:
 #     path: cronjobs/
 #     repoURL: 'https://github.com/akuity/examples'
