@@ -14,6 +14,6 @@ terraform {
 
 provider "akp" {
   org_name = var.akp_org_name
-#   api_key_id = AKUITY_API_KEY_ID
-#   api_key_secret = AKUITY_API_KEY_SECRET
+  #   api_key_id = AKUITY_API_KEY_ID
+  #   api_key_secret = AKUITY_API_KEY_SECRET
 }

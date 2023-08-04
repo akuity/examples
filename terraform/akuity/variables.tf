@@ -22,6 +22,6 @@ variable "region" {
 }
 
 variable "akp_org_name" {
-  type = string
+  type        = string
   description = "Akuity Platform organization name."
 }
