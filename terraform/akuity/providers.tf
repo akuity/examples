@@ -6,7 +6,7 @@ terraform {
     }
     akp = {
       source  = "akuity/akp"
-      version = "~> 0.5.0"
+      version = "~> 0.5.2"
     }
   }
   required_version = ">= 0.14"
