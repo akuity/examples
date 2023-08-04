@@ -1,21 +1,4 @@
 # https://github.com/hashicorp/learn-terraform-provision-gke-cluster/blob/main/gke.tf
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-variable "gke_username" {
-  default     = ""
-  description = "gke username"
-}
-
-variable "gke_password" {
-  default     = ""
-  description = "gke password"
-}
-
-variable "gke_num_nodes" {
-  default     = 1
-  description = "number of gke nodes"
-}
 
 # GKE cluster
 data "google_container_engine_versions" "gke_version" {
