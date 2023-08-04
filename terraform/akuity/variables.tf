@@ -20,3 +20,8 @@ variable "project_id" {
 variable "region" {
   description = "region"
 }
+
+variable "akp_org_name" {
+  type = string
+  description = "Akuity Platform organization name."
+}
