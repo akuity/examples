@@ -18,6 +18,12 @@ resource "google_container_cluster" "gke-01" {
 
   network    = google_compute_network.vpc.name
   subnetwork = google_compute_subnetwork.subnet.name
+
+  master_auth {
+    client_certificate_config {
+      issue_client_certificate = true
+    }
+  }
 }
 
 # Separately Managed Node Pool
@@ -67,3 +73,35 @@ resource "google_container_node_pool" "primary_nodes" {
 #   client_key             = google_container_cluster.gke-01.master_auth.0.client_key
 #   cluster_ca_certificate = google_container_cluster.gke-01.master_auth.0.cluster_ca_certificate
 # }
+
+data "google_client_config" "current" {}
+
+# Grant user `client` (as set by the `google_client_config` resources) cluster-admin.
+# Used by the `akp_cluster` resource to install the Akuity Agent into the cluster.
+resource "kubernetes_cluster_role_binding" "client_cluster_admin" {
+  metadata {
+    annotations = {}
+    labels      = {}
+    name        = "client-cluster-admin"
+  }
+  role_ref {
+    api_group = "rbac.authorization.k8s.io"
+    kind = "ClusterRole"
+    name = "cluster-admin"
+  }
+  subject {
+    kind = "User"
+    name = "client"
+    api_group = "rbac.authorization.k8s.io"
+  }
+  subject {
+    kind = "ServiceAccount"
+    name = "default"
+    namespace = "kube-system"
+  }
+  subject {
+    kind = "Group"
+    name = "system:masters"
+    api_group = "rbac.authorization.k8s.io"
+  }
+}
