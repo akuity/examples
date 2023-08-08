@@ -86,22 +86,22 @@ resource "kubernetes_cluster_role_binding" "client_cluster_admin" {
   }
   role_ref {
     api_group = "rbac.authorization.k8s.io"
-    kind = "ClusterRole"
-    name = "cluster-admin"
+    kind      = "ClusterRole"
+    name      = "cluster-admin"
   }
   subject {
-    kind = "User"
-    name = "client"
+    kind      = "User"
+    name      = "client"
     api_group = "rbac.authorization.k8s.io"
   }
   subject {
-    kind = "ServiceAccount"
-    name = "default"
+    kind      = "ServiceAccount"
+    name      = "default"
     namespace = "kube-system"
   }
   subject {
-    kind = "Group"
-    name = "system:masters"
+    kind      = "Group"
+    name      = "system:masters"
     api_group = "rbac.authorization.k8s.io"
   }
 }
