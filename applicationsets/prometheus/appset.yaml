@@ -25,6 +25,9 @@ spec:
         helm:
           valueFiles:
           - "$values/applicationsets/prometheus/values-{{ metadata.labels.provider }}.yaml"
+          values: |
+            alertmanager:
+              enabled: false
           parameters:
             - name: "server.global.external_labels.dc"
               value: "{{name}}"
