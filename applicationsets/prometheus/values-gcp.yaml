@@ -5,6 +5,8 @@ server:
     repository: quay.io/akuity/akuity
   podLabels:
     dc: "label-from-values-file"
+  global:
+    scrape_interval: 2000m
 serverFiles:
   alerting_rules.yml:
     groups:
