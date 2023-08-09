@@ -15,6 +15,9 @@ spec:
         cluster_Name: "{{cluster}}"
     spec:
       project: default
+      destination:
+        name: in-cluster
+        namespace: argocd
       sources:
       - repoURL: 'https://prometheus-community.github.io/helm-charts'
         chart: prometheus
