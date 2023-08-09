@@ -3,3 +3,5 @@ rbac:
 server:
   image:
     repository: quay.io/akuity/akuity
+  podLabels:
+    dc: "label-from-values-file"
