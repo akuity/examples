@@ -12,7 +12,7 @@ spec:
     metadata:
       name: "{{name}}-prometheus"
       labels:
-        cluster_Name: "{{name}}"
+        cluster_name: "{{name}}"
     spec:
       project: default
       destination:
