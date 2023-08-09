@@ -31,9 +31,9 @@ spec:
             server:
               podLabels:
                 dc: "{{name}}"
-          # parameters:
-          #   - name: "server.global.external_labels.dc"
-          #     value: "{{name}}"
+          parameters:
+            - name: "serverFiles.prometheus\\.yml.external_labels.cluster"
+              value: "{{name}}"
       - repoURL: 'https://github.com/akuity/examples.git'
         targetRevision: HEAD
         ref: values
