@@ -16,15 +16,15 @@ spec:
     spec:
       project: default
       destination:
-        name: in-cluster
-        namespace: argocd
+        name: kind
+        namespace: prometheus
       sources:
       - repoURL: 'https://prometheus-community.github.io/helm-charts'
         chart: prometheus
         targetRevision: 15.7.1
         helm:
           valueFiles:
-          - $values/applicationsets/prometheus/values-{{provider}}.yaml
+          - "$values/applicationsets/prometheus/values-{{ metadata.labels.provider }}.yaml"
           parameters:
             - name: "server.global.external_labels.dc"
               value: "{{name}}"
