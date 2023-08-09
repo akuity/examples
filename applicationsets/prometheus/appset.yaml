@@ -10,9 +10,9 @@ spec:
         - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
   template:
     metadata:
-      name: "{{cluster}}-prometheus"
+      name: "{{name}}-prometheus"
       labels:
-        cluster_Name: "{{cluster}}"
+        cluster_Name: "{{name}}"
     spec:
       project: default
       destination:
@@ -27,7 +27,7 @@ spec:
           - $values/applicationsets/prometheus/values-{{provider}}.yaml
           parameters:
             - name: "server.global.external_labels.dc"
-              value: "{{cluster}}"
+              value: "{{name}}"
       - repoURL: 'https://github.com/akuity/examples.git'
         targetRevision: HEAD
         ref: values
