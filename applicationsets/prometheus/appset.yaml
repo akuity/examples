@@ -28,9 +28,13 @@ spec:
           values: |
             alertmanager:
               enabled: false
-          parameters:
-            - name: "server.global.external_labels.dc"
-              value: "{{name}}"
+            server:
+              global:
+                external_labels:
+                  dc: "{{name}}"
+          # parameters:
+          #   - name: "server.global.external_labels.dc"
+          #     value: "{{name}}"
       - repoURL: 'https://github.com/akuity/examples.git'
         targetRevision: HEAD
         ref: values

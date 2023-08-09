@@ -1,2 +1,5 @@
 rbac:
   create: false
+server:
+  image:
+    repository: quay.io/akuity/akuity
