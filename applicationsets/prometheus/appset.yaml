@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       destination:
-        name: kind
+        name: '{{name}}'
         namespace: prometheus
       sources:
       - repoURL: 'https://prometheus-community.github.io/helm-charts'
