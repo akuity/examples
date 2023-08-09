@@ -8,23 +8,23 @@ spec:
       selector:
         matchExpressions:
         - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
-    template:
-      metadata:
-        name: "{{cluster}}-prometheus"
-        labels:
-          cluster_Name: "{{cluster}}"
-      spec:
-        project: default
-        sources:
-        - repoURL: 'https://prometheus-community.github.io/helm-charts'
-          chart: prometheus
-          targetRevision: 15.7.1
-          helm:
-            valueFiles:
-            - $values/applicationsets/prometheus/values-{{provider}}.yaml
-            parameters:
-              - name: "server.global.external_labels.dc"
-                value: "{{cluster}}"
-        - repoURL: 'https://github.com/akuity/examples.git'
-          targetRevision: HEAD
-          ref: values
+  template:
+    metadata:
+      name: "{{cluster}}-prometheus"
+      labels:
+        cluster_Name: "{{cluster}}"
+    spec:
+      project: default
+      sources:
+      - repoURL: 'https://prometheus-community.github.io/helm-charts'
+        chart: prometheus
+        targetRevision: 15.7.1
+        helm:
+          valueFiles:
+          - $values/applicationsets/prometheus/values-{{provider}}.yaml
+          parameters:
+            - name: "server.global.external_labels.dc"
+              value: "{{cluster}}"
+      - repoURL: 'https://github.com/akuity/examples.git'
+        targetRevision: HEAD
+        ref: values
