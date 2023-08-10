@@ -26,6 +26,7 @@ spec:
         targetRevision: 15.7.1
         helm:
           valueFiles:
+          # - '$values/applicationsets/prometheus/values-{{ if eq (splitList "-" .name | first) "gcp" }}gke{{end}}.yaml'
           - '$values/applicationsets/prometheus/values-{{ (splitList "-" .name | first) }}.yaml'
           # - '$values/applicationsets/prometheus/values-{{ index .metadata.labels "provider" }}.yaml'
           # values: |
