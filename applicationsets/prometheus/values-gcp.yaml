@@ -1,12 +1,12 @@
 rbac:
   create: false
 server:
+  global:
+    scrape_interval: 2000m
   image:
     repository: quay.io/akuity/akuity
   podLabels:
     dc: "label-from-values-file"
-  global:
-    scrape_interval: 2000m
 serverFiles:
   alerting_rules.yml:
     groups:
@@ -15,6 +15,16 @@ serverFiles:
           - alert: InstanceDown on {{ $externalLabels.cluster }}
             expr: up == 0
             for: 5m
+            labels:
+              severity: page
+            annotations:
+              description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+              summary: 'Instance {{ $labels.instance }} down'
+      - name: Instances-2
+        rules:
+          - alert: Instance2Down on {{ $externalLabels.cluster }}
+            expr: up == 0
+            for: 20m
             labels:
               severity: page
             annotations:
