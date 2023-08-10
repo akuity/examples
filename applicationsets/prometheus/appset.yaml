@@ -32,22 +32,22 @@ spec:
                   cluster: "{{name}}"
             alertmanager:
               enabled: false
-            # serverFiles:
-            #   alerting_rules.yml:
-            #     groups:
-            #       - name: Instances
-            #         rules:
-            #           - alert: InstanceDown on {{ name }}
-            #             expr: up == 0
-            #             for: 5m
-            #             labels:
-            #               severity: page
-            #             annotations:
-            #               description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
-            #               summary: 'Instance {{ $labels.instance }} down'
-          parameters:
-            - name: "serverFiles.alerting_rules\\.yml.groups.[0].name"
-              value: "Instances on {{name}}"
+            serverFiles:
+              alerting_rules.yml:
+                groups:
+                  - name: Instances
+                    rules:
+                      - alert: InstanceDown on {{ name }}
+                        expr: up == 0
+                        for: 5m
+                        labels:
+                          severity: page
+                        annotations:
+                          description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+                          summary: 'Instance {{ $labels.instance }} down'
+          # parameters:
+          #   - name: "serverFiles.alerting_rules\\.yml.groups.[0].name"
+          #     value: "Instances on {{name}}"
       - repoURL: 'https://github.com/akuity/examples.git'
         targetRevision: HEAD
         ref: values
