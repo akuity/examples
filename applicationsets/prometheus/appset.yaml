@@ -46,8 +46,8 @@ spec:
                         labels:
                           severity: page
                         annotations:
-                          description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
-                          summary: 'Instance {{ $labels.instance }} down'
+                          description: '\{\{ $labels.instance \}\} of job \{\{ $labels.job \}\} has been down for more than 5 minutes.'
+                          summary: 'Instance \{\{ $labels.instance \}\} down'
           # parameters:
           #   - name: "serverFiles.alerting_rules\\.yml.groups.0.name"
           #     value: "Instances on {{.name}}"
