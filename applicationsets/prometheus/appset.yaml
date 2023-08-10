@@ -3,14 +3,14 @@ kind: ApplicationSet
 metadata:
   name: clusters-prometheus
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
   - clusters:
       selector:
         matchExpressions:
         - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
   template:
-    goTemplate: true
-    goTemplateOptions: ["missingkey=error"]
     metadata:
       name: "{{.name}}-prometheus"
       labels:
