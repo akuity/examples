@@ -9,14 +9,16 @@ spec:
         matchExpressions:
         - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
   template:
+    goTemplate: true
+    goTemplateOptions: ["missingkey=error"]
     metadata:
-      name: "{{name}}-prometheus"
+      name: "{{.name}}-prometheus"
       labels:
-        cluster_name: "{{name}}"
+        cluster_name: "{{.name}}"
     spec:
       project: default
       destination:
-        name: '{{name}}'
+        name: '{{.name}}'
         namespace: prometheus
       sources:
       - repoURL: 'https://prometheus-community.github.io/helm-charts'
@@ -24,12 +26,13 @@ spec:
         targetRevision: 15.7.1
         helm:
           valueFiles:
+          # - "$values/applicationsets/prometheus/values-{{ if eq (splitList "-" name | first) "gke" }}gke{{end}}.yaml"
           - "$values/applicationsets/prometheus/values-{{ metadata.labels.provider }}.yaml"
           values: |
             server:
               global:
                 external_labels:
-                  cluster: "{{name}}"
+                  cluster: "{{.name}}"
             alertmanager:
               enabled: false
             serverFiles:
@@ -47,7 +50,7 @@ spec:
                           summary: 'Instance {{ $labels.instance }} down'
           # parameters:
           #   - name: "serverFiles.alerting_rules\\.yml.groups.0.name"
-          #     value: "Instances on {{name}}"
+          #     value: "Instances on {{.name}}"
       - repoURL: 'https://github.com/akuity/examples.git'
         targetRevision: HEAD
         ref: values
